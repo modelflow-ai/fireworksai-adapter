@@ -20,8 +20,11 @@ class ExampleEmbedding implements EmbeddingInterface
 {
     use EmbeddingTrait;
 
-    public function __construct(string $content, private readonly string $fileName)
-    {
+    public function __construct(
+        string $content,
+        private readonly string $fileName,
+        public readonly ?string $category = null,
+    ) {
         $this->content = $content;
         $this->hash = $this->hash($fileName);
     }
